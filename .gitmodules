@@ -1,0 +1,6 @@
+[submodule "Web2"]
+	path = Web2
+	url = ssh://git@gitlab.insa-rennes.fr:16022/web2-2024/proj-ingeweb-gasnier-tollemer.git
+[submodule "CPOO2"]
+	path = CPOO2
+	url = git@github.com:TheBloodMan49/INFO-S7-CPOO2.git

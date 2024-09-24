@@ -1,0 +1,58 @@
+#include <stdlib.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <wait.h>
+
+struct sigaction action;
+sigset_t mask_nv;
+sigset_t mask_anc;
+
+void handler(int sig){
+  printf("Signal recu\n");
+}
+
+int main (int argc, char * argv[])
+{
+  
+  // bloque SIGUSR1
+  sigemptyset(&mask_nv);
+  sigaddset(&mask_nv, SIGUSR1); // A decommenter
+  sigprocmask(SIG_BLOCK, &mask_nv, &mask_anc);
+
+  //D�finition du handler
+  action.sa_handler=handler;
+  sigaction(SIGUSR1,&action,NULL);
+
+  //creation d'un processus
+  int pid=fork();
+	
+  if(pid==-1)
+    {
+      perror("Creation du processus fils echoue");
+      exit(0);
+    }
+
+  //fils
+  if(pid==0)
+    {
+      sleep(1);
+      printf("Debut attente du fils\n");
+      sigsuspend (&mask_anc);
+      printf("Fin attente du fils\n");
+      exit(0);
+    }
+  else //pere
+    {
+      kill(pid,SIGUSR1); //On envoie le signal SIGUSR1 au processus fils dont le pid est pid
+      //On a red�fini le comportement du handler de SIGUSR1
+      printf("Debut attente du pere\n");
+      wait(NULL);//Attente de la fin d'un fils
+      printf("Fin attente du pere\n");
+	
+    }	
+  exit(0);
+}

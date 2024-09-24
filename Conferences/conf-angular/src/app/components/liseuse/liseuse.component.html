@@ -1,0 +1,17 @@
+<main class="main">
+  <div class="content">
+    <app-planche  [planche]="plancheEnCours"></app-planche>
+    <div class="controls">
+      <button (click)="first()">First</button>
+      <button (click)="prev()">Previous</button>
+      <button (click)="random()">Random</button>
+      <button (click)="next()">Next</button>
+      <button (click)="last()">Last</button>
+    </div>
+    <div class="selector">
+      <input type="number" [(ngModel)]="numeroEnCours" min="1" max="2980"/> 
+      <button (click)="goTo()">Go to</button>
+      <div>Saisie : {{numeroEnCours}}</div>
+    </div>
+  </div>
+</main>
