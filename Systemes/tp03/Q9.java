@@ -58,7 +58,7 @@ class Semaphore {
   }
 
   public synchronized void V() {
-    notify();
+    notifyAll();
     counter++;
   }
 }
