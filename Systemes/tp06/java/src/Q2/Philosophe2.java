@@ -1,4 +1,4 @@
-package Q1;
+package Q2;
 
 public class Philosophe2 extends Thread {
 
