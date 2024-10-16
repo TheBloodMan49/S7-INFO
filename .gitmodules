@@ -4,3 +4,6 @@
 [submodule "CPOO2"]
 	path = CPOO2
 	url = git@github.com:TheBloodMan49/INFO-S7-CPOO2.git
+[submodule "VR-heads-or-tails"]
+	path = VR-heads-or-tails
+	url = ssh://git@gitlab.insa-rennes.fr:16022/Jules.Chaidron/vr-jules_chaidron-paul_gasnier.git
