@@ -69,7 +69,7 @@ def find_cesar_cipher_using_frequency_distribution(string: str) -> str:
             best_shift = i
 
     # Uncomment to plot the frequency distributions !
-    '''
+
     frequencies_shifted = [frequencies[(i+best_shift)%26] for i in range(26)]
     # x is the list of letters
     x = [chr(i+ord('A')) for i in range(26)]
@@ -79,7 +79,7 @@ def find_cesar_cipher_using_frequency_distribution(string: str) -> str:
     plt.title(f'Found key letter: {chr(best_shift + ord("A"))}')
     plt.legend()
     plt.show()
-    '''
+
 
     return chr(best_shift + ord('A'))
 
